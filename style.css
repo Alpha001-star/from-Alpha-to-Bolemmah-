@@ -1,0 +1,223 @@
+/* ===== BODY & STARRY SKY ===== */
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at bottom, #0b1c2d, #020c18);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Segoe UI", sans-serif;
+    overflow: hidden;
+    color: white;
+  }
+  
+  /* Stars */
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkle 3s infinite ease-in-out;
+  }
+  
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+  
+  /* ===== SCENE ===== */
+  .scene {
+    perspective: 1200px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .title {
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #ffb6c1;
+    text-shadow: 0 0 12px rgba(255,182,193,0.7);
+  }
+  
+  /* ===== BOX ===== */
+  .box {
+    position: relative;
+    width: 160px;
+    height: 120px;
+    transform-style: preserve-3d;
+  }
+  
+  /* Gift ribbon */
+  .ribbon-vertical,
+  .ribbon-horizontal {
+    position: absolute;
+    background: linear-gradient(180deg, #ff4d6d, #ff9aa2);
+    z-index: 2;
+  }
+  
+  .ribbon-vertical {
+    width: 20px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .ribbon-horizontal {
+    height: 20px;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  /* Ribbon bow */
+  .bow {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    font-size: 30px;
+    transition: transform 0.8s ease;
+  }
+  
+  .box.open .bow {
+    transform: translateX(-50%) scale(1);
+  }
+  
+  .base {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(145deg, #1e90ff, #0b5ed7);
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+  }
+  
+  .lid {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(145deg, #4aa3ff, #1e90ff);
+    transform-origin: bottom;
+    transition: transform 1.2s ease;
+    border-radius: 18px 18px 0 0;
+  }
+  
+  .box.open .lid {
+    transform: rotateX(120deg);
+  }
+  
+  /* ===== MESSAGES ===== */
+  .messages {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+  
+  .message {
+    position: absolute;
+    font-size: 1.1rem;
+    opacity: 0;
+    animation: floatUp 4s ease forwards;
+    white-space: nowrap;
+    text-shadow: 0 0 10px rgba(255,255,255,0.7);
+  }
+  
+  @keyframes floatUp {
+    0% { transform: translate(-50%, 20px); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translate(-50%, -260px); opacity: 0; }
+  }
+  
+  /* ===== HEART SPARKLES ===== */
+  .heart {
+    position: absolute;
+    font-size: 18px;
+    color: pink;
+    animation: sparkle 3s linear forwards;
+    z-index: 1;
+  }
+  
+  @keyframes sparkle {
+    0% { transform: translateY(0) scale(0.5); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-300px) scale(1.4); opacity: 0; }
+  }
+  /* ===== LOVE LETTER OVERLAY ===== */
+.letter-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 12, 24, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+  z-index: 5;
+}
+
+.letter-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.letter-card {
+  background: linear-gradient(180deg, #ffffff, #f7f9ff);
+  color: #333;
+  max-width: 420px;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+  animation: letterFloat 1.2s ease;
+  text-align: left;
+}
+
+.letter-card h2 {
+  color: #ff4d6d;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.letter-card p {
+  line-height: 1.7;
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+.signature {
+  margin-top: 20px;
+  text-align: right;
+  color: #1e90ff;
+}
+
+.letter-card button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 12px;
+  background: #1e90ff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.letter-card button:hover {
+  background: #0b5ed7;
+}
+
+@keyframes letterFloat {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
